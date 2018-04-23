@@ -85,7 +85,7 @@ public class TCReader extends BlockDeviceImpl {
 
     public String nameOfHashFunction() {
         try {
-            return this.header.hashFunction.newInstance().name();
+            return this.header.hashFunction.getDeclaredConstructor(new Class[0]).newInstance().name();
         }
         catch (Exception e) {
             return e.getLocalizedMessage();
@@ -94,7 +94,7 @@ public class TCReader extends BlockDeviceImpl {
 
     public String nameOfBlockCipher() {
         try {
-            return this.header.blockCipher.newInstance().name();
+            return this.header.blockCipher.getDeclaredConstructor(new Class[0]).newInstance().name();
         }
         catch (Exception e) {
             return e.getLocalizedMessage();

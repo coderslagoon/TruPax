@@ -1,5 +1,7 @@
 package coderslagoon.tclib.container;
 
+import java.lang.reflect.InvocationTargetException;
+
 import coderslagoon.tclib.crypto.BlockCipher;
 import coderslagoon.tclib.crypto.XTS;
 import coderslagoon.tclib.util.Erasable;
@@ -22,13 +24,19 @@ public class Volume implements Erasable, Cloneable {
         BlockCipher bc1 = null;
         BlockCipher bc2 = null;
         try {
-            bc1 = header.blockCipher.newInstance();
-            bc2 = header.blockCipher.newInstance();
+            bc1 = header.blockCipher.getDeclaredConstructor(new Class[0]).newInstance();
+            bc2 = header.blockCipher.getDeclaredConstructor(new Class[0]).newInstance();
 
             bc1.initialize(mode                    , header.keyMaterial.buf, header.keyMaterial.ofs);
             bc2.initialize(BlockCipher.Mode.ENCRYPT, header.keyMaterial.buf, header.keyMaterial.ofs + bc1.keySize());
 
             this.xts = new XTS(bc1, bc2);
+        }
+        catch (NoSuchMethodException nsme) {
+            throw new TCLibException(nsme);
+        }
+        catch (InvocationTargetException ite) {
+            throw new TCLibException(ite);
         }
         catch (InstantiationException ie) {
             throw new TCLibException(ie);

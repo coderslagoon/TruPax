@@ -169,7 +169,7 @@ public class PrgImpl extends Prg {
         }
 
         return 0 == c ? Result.ok() : new Result(
-                Result.Code.GOT_OBJECTS, new Integer(c).toString(), null);
+                Result.Code.GOT_OBJECTS, Integer.valueOf(c).toString(), null);
     }
 
     ///////////////////////////////////////////////////////////////////////////

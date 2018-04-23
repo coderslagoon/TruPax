@@ -1,5 +1,6 @@
 package coderslagoon.tclib.container;
 
+import java.lang.reflect.InvocationTargetException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -239,9 +240,9 @@ public class Header implements Erasable {
                             Registry._blockCiphers.lookup(blockCipher);
                     try {
                         DecodeResult dres = decode(type,
-                                tryBlockCipher.newInstance(),
-                                tryBlockCipher.newInstance(),
-                                tryHashFunction.newInstance(),
+                                tryBlockCipher.getDeclaredConstructor(new Class[0]).newInstance(),
+                                tryBlockCipher.getDeclaredConstructor(new Class[0]).newInstance(),
+                                tryHashFunction.getDeclaredConstructor(new Class[0]).newInstance(),
                                 key.data(), buf, ofs);
     
                         if (dres == DecodeResult.SUCCESS) {
@@ -250,6 +251,12 @@ public class Header implements Erasable {
                             this.type = type;
                             return;
                         }
+                    }
+                    catch (NoSuchMethodException nsme) {
+                        throw new TCLibException(nsme);
+                    }
+                    catch (InvocationTargetException ite) {
+                        throw new TCLibException(ite);
                     }
                     catch (InstantiationException ie) {
                         throw new TCLibException(ie);
@@ -475,9 +482,9 @@ public class Header implements Erasable {
             crc.update(result, SALT_SIZE, OFS_CRC32_2 - SALT_SIZE);
             BinUtils.writeInt32BE(crc.get(), result, OFS_CRC32_2);
 
-            hashf = this.hashFunction.newInstance();
-            bcipher1 = this.blockCipher.newInstance();
-            bcipher2 = this.blockCipher.newInstance();
+            hashf = this.hashFunction.getDeclaredConstructor(new Class[0]).newInstance();
+            bcipher1 = this.blockCipher.getDeclaredConstructor(new Class[0]).newInstance();
+            bcipher2 = this.blockCipher.getDeclaredConstructor(new Class[0]).newInstance();
 
             kdf = new PKCS5.PBKDF2(hashf);
 
@@ -572,7 +579,13 @@ public class Header implements Erasable {
         BlockCipher bcipher = null;
 
         try {
-            bcipher = this.blockCipher.newInstance();
+            bcipher = this.blockCipher.getDeclaredConstructor(new Class[0]).newInstance();
+        }
+        catch (NoSuchMethodException nsme) {
+            throw new TCLibException(nsme);
+        }
+        catch (InvocationTargetException ite) {
+            throw new TCLibException(ite);
         }
         catch (InstantiationException ie) {
             throw new TCLibException(ie);

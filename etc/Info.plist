@@ -16,11 +16,11 @@
 		<string>TruPax</string>
 	<key>CFBundlePackageType</key>
 		<string>APPL</string>
-	<key>CFBundleShortVersionString</key><string>9 B
+	<key>CFBundleShortVersionString</key><string>9 C
 		</string>
 	<key>CFBundleSignature</key>
 		<string>?????</string>
-	<key>CFBundleVersion</key><string>9 B
+	<key>CFBundleVersion</key><string>9 C
 		</string>
 	<key>NSPrincipalClass</key>
 		<string>NSApplication</string>

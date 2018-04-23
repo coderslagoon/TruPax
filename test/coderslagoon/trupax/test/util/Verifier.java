@@ -56,7 +56,7 @@ public class Verifier {
             //       cases right, which admittedly should be a bit more flexible
             MiscUtils.underOSX() ? "/tmp" : System.getProperty("java.io.tmpdir")) : tmpDir;
         try {
-            this.creator = (null == cclazz ? DefaultCreator.class : cclazz).newInstance();
+            this.creator = (null == cclazz ? DefaultCreator.class : cclazz).getDeclaredConstructor(new Class[0]).newInstance();
         }
         catch (Exception e) {
             throw new IOException(e.getLocalizedMessage());

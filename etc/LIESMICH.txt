@@ -1,5 +1,18 @@
-INSTALLATION
+﻿__Installation__
+
+_Windows_
 
 Durch Starten der Datei "install.vbs" wird eine Verknüpfung auf dem Desktop
-angelegt. Sie verweist auf das Installationsverzeichnis, wird also ungültig wenn
-dieses verschoben oder gelöscht wird.
+angelegt. Sie verweist auf das Installationsverzeichnis, wird also ungültig
+wenn dieses verschoben oder gelöscht wird.
+
+_Linux_
+
+Entpacken Sie das Archiv an einem beliebigen Platz. Öffnen Sie dann ein
+Terminal, gehen in den Ordner und geben Sie `./install.sh` ein, danach
+Ihr Passwort (sudo-Rechte werden benötigt). Nach der Installation steht
+das App-Symbol bereit, der ursprüngliche Ordner kann entfernt werden, die
+eigentliche Installation landet in "/opt". Dort können Sie dann die Software
+wieder mit Hilfe des Scripts "/uninstall.sh" entfernen. Falls Sie das "trupax"
+Kommando im Terminal verwenden wollen: einfach den Installationsorder zum
+"PATH" hinzufügen.

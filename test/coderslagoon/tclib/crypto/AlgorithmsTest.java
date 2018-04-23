@@ -19,7 +19,7 @@ public class AlgorithmsTest {
                 PKCS5.PBKDF2.class,
                 XTS         .class,
         }) {
-            Testable tst = clz.newInstance();
+            Testable tst = clz.getDeclaredConstructor(new Class[0]).newInstance();
             tst.test();
             if (tst instanceof Algorithm) {
                 String name = ((Algorithm)tst).name();

@@ -193,7 +193,7 @@ public class HeaderTest {
 
         hdr.generateKeyMaterial(null);
 
-        int keysSize = AES256.class.newInstance().keySize() << 1;
+        int keysSize = AES256.class.getDeclaredConstructor(new Class[0]).newInstance().keySize() << 1;
 
         int sum = 0;  // very, very unlikely that the whole key will be all zero
         for (int i = 0; i < keysSize; i++) {

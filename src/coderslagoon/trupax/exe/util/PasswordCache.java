@@ -54,6 +54,5 @@ public class PasswordCache {
     @Override
     public void finalize() throws Throwable {
         clear();
-        super.finalize();
     }
 }

@@ -132,9 +132,6 @@ public abstract class Rand implements Testable, Erasable {
         public String toString() {
             return super.toString();
         }
-        protected synchronized void finalize() throws Throwable {
-            super.finalize();
-        }
         private static final long serialVersionUID = 2173765181962678519L;
     };
 }

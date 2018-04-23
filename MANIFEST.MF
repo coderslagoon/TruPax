@@ -4,9 +4,9 @@ Main-Class: coderslagoon.trupax.exe.GUI
 Class-Path: . swt.jar fat32-lib-0.6.5.jar
 Name: coderslagoon/trupax/exe/gui
 Specification-Title: TruPax Executables
-Specification-Version: 9 B
+Specification-Version: 9 C
 Specification-Vendor: CODERSLAGOON
 Implementation-Title: trupax.exe
-Implementation-Version: 9 B
+Implementation-Version: 9 C
 Implementation-Vendor: CODERSLAGOON
 Trusted-Library: true

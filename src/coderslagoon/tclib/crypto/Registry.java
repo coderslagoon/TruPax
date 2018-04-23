@@ -23,7 +23,7 @@ public class Registry<T extends Algorithm> {
      */
     public void add(Class<? extends T> clazz, boolean test) throws TCLibException {
         try {
-            T alg = clazz.newInstance();
+            T alg = clazz.getDeclaredConstructor(new Class[0]).newInstance();
             if (test) {
                 alg.test();
             }
