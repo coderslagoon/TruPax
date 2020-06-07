@@ -34,12 +34,12 @@ the right starting point.
 TruPax development is done in Eclipse (Photon+). Choose the right SWT project for
 your platform, and import it into your workspace. It will show up as
 *org.clipse.swt*. On Linux for instance it would be *swt/4.8/gtk-linux_x86_64/*.
-You also need the library CLBaseLib, which you can clone from GitHub and import its
-Eclipse project.
+You also need the library [CLBaseLib](https://github.com/mhahn-c/clbaselib), which
+you can clone from GitHub and import its Eclipse project.
 
 You should then able to build the code base. Once this has been set up you can
 launch the GUI by debugging the class *coderslagoon.trupax.exe.GUI*.
- 
+
 ## Testing
 
 Verification for TruPax and CLBaseLib is implemented as JUnit tests, which are
@@ -62,7 +62,7 @@ UDF file systems comply to the actual specification.
 
 ## Shipping
 
-For shipping clone the [jre-reduce](https://github.com/coderslagoon/jre-reduce)
+For shipping clone the [jre-reduce](https://github.com/mhahn-c/jre-reduce)
 repo from GitHub, in parallel to the other projects. Download the appropriate JRE
 runtime files, as mentioned in the jre-reduce documentation. Then run *build.sh*
 and *build_macos.sh* to create the installer, passing them a version string.
@@ -85,7 +85,7 @@ available languages - also watch out for correct format parameter provisioning.
 
 The SDK comprises two APIs:
 
-* *coderslagoon.trupax.lib.prg.Prg(Impl)* - 
+* *coderslagoon.trupax.lib.prg.Prg(Impl)* -
   the official TruPax API, as used by the GUI and the command line versions
 * *coderslagoon.tclib* -
   low-level functionality, for crypto and raw container handling
